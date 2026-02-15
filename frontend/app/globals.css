@@ -1,0 +1,54 @@
+@import "tailwindcss";
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: oklch(0.1 0.02 139);
+    --foreground: #e8f5eb;
+  }
+}
+
+@theme {
+  --color-bg-dark: oklch(0.1 0.1 99);
+  --color-bg: oklch(0.15 0.1 99);
+  --color-light: oklch(0.2 0.1 99);
+  --color-text: oklch(1 0 0);
+  --color-muted: oklch(0.76 0.1 99);
+  --color-highlight: oklch(0.87 0.15 88);
+  --color-border: oklch(0.4 0.2 99);
+  --color-border-muted: oklch(0.3 0.2 99);
+  --color-primary: oklch(0.94 0.20 117);
+  --color-secondary: oklch(0.76 0.2 27);
+  --color-danger: oklch(0.7 0.2 30);
+  --color-warning: oklch(0.7 0.2 100);
+  --color-success: oklch(0.7 0.2 160);
+  --color-info: oklch(0.7 0.2 260);
+}
+
+body {
+  color: #e8f5eb;
+}
+.scale:hover {
+  animation: none;
+  transform: scale(1.05);
+}
+.scale {
+  animation: scale-breathe 1s ease-in-out infinite;
+  transition: transform 0.3s ease-in-out;
+}
+
+@keyframes scale-breathe {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+}
