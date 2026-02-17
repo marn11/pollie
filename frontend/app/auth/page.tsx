@@ -1,6 +1,7 @@
 import Image from "next/image";
+import Link from "next/link";
 
-export default function Login() {
+export default function Auth() {
   return (
     <div className="flex min-h-screen items-center justify-center">
       <main className="flex min-h-screen w-full max-w-3xl flex-col items-center py-32 px-16">
@@ -54,6 +55,7 @@ export default function Login() {
               ></div>
             </div>
             <div className="flex flex-col gap-2 my-1 p-4">
+              <Link href={"http://localhost:3001/api/v1/auth/google/callback"}>
               <div
                 className="flex text-bg-dark hover:bg-primary/80 bg-primary p-2 gap-2 justify-center rounded-xl cursor-pointer
               inset-shadow-sm inset-shadow-border font-semibold transition-all ease-in-out"
@@ -66,6 +68,7 @@ export default function Login() {
                 ></Image>
                 <button className="cursor-pointer">Continue with Google</button>
               </div>
+                </Link>
             </div>
           </div>
           <div className="p-4 text-sm">
