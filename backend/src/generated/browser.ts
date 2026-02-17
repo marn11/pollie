@@ -22,3 +22,18 @@ export * from './enums';
  * 
  */
 export type User = Prisma.UserModel
+/**
+ * Model Poll
+ * 
+ */
+export type Poll = Prisma.PollModel
+/**
+ * Model Option
+ * 
+ */
+export type Option = Prisma.OptionModel
+/**
+ * Model Vote
+ * 
+ */
+export type Vote = Prisma.VoteModel
