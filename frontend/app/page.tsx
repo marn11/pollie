@@ -63,7 +63,7 @@ export default function Home() {
             width={760}
             height={420}
             className="mt-10 rounded-3xl shadow-2xl border"
-            alt="CabinCare preview"
+            alt="Pollie preview"
           />
           {/* <AnimatePresence></AnimatePresence> */}
           <section className="flex flex-col gap-3 items-center my-5">
