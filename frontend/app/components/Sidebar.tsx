@@ -12,7 +12,6 @@ export default function Sidebar({
   onClose: () => void;
 }) {
 	const pathname = usePathname();
-	console.log(pathname)
   return (
     <>
       {/* Overlay */}
