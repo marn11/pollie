@@ -777,7 +777,9 @@ export const VoteScalarFieldEnum = {
   id: 'id',
   pollId: 'pollId',
   optionId: 'optionId',
-  voterHash: 'voterHash'
+  voterHash: 'voterHash',
+  isAnonymous: 'isAnonymous',
+  userId: 'userId'
 } as const
 
 export type VoteScalarFieldEnum = (typeof VoteScalarFieldEnum)[keyof typeof VoteScalarFieldEnum]

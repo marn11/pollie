@@ -1,0 +1,6 @@
+-- AlterTable
+ALTER TABLE "Vote" ADD COLUMN     "isAnonymous" BOOLEAN NOT NULL DEFAULT false,
+ADD COLUMN     "userId" INTEGER;
+
+-- AddForeignKey
+ALTER TABLE "Vote" ADD CONSTRAINT "Vote_userId_fkey" FOREIGN KEY ("userId") REFERENCES "User"("id") ON DELETE SET NULL ON UPDATE CASCADE;

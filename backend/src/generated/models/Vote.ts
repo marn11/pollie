@@ -30,12 +30,14 @@ export type VoteAvgAggregateOutputType = {
   id: number | null
   pollId: number | null
   optionId: number | null
+  userId: number | null
 }
 
 export type VoteSumAggregateOutputType = {
   id: number | null
   pollId: number | null
   optionId: number | null
+  userId: number | null
 }
 
 export type VoteMinAggregateOutputType = {
@@ -43,6 +45,8 @@ export type VoteMinAggregateOutputType = {
   pollId: number | null
   optionId: number | null
   voterHash: string | null
+  isAnonymous: boolean | null
+  userId: number | null
 }
 
 export type VoteMaxAggregateOutputType = {
@@ -50,6 +54,8 @@ export type VoteMaxAggregateOutputType = {
   pollId: number | null
   optionId: number | null
   voterHash: string | null
+  isAnonymous: boolean | null
+  userId: number | null
 }
 
 export type VoteCountAggregateOutputType = {
@@ -57,6 +63,8 @@ export type VoteCountAggregateOutputType = {
   pollId: number
   optionId: number
   voterHash: number
+  isAnonymous: number
+  userId: number
   _all: number
 }
 
@@ -65,12 +73,14 @@ export type VoteAvgAggregateInputType = {
   id?: true
   pollId?: true
   optionId?: true
+  userId?: true
 }
 
 export type VoteSumAggregateInputType = {
   id?: true
   pollId?: true
   optionId?: true
+  userId?: true
 }
 
 export type VoteMinAggregateInputType = {
@@ -78,6 +88,8 @@ export type VoteMinAggregateInputType = {
   pollId?: true
   optionId?: true
   voterHash?: true
+  isAnonymous?: true
+  userId?: true
 }
 
 export type VoteMaxAggregateInputType = {
@@ -85,6 +97,8 @@ export type VoteMaxAggregateInputType = {
   pollId?: true
   optionId?: true
   voterHash?: true
+  isAnonymous?: true
+  userId?: true
 }
 
 export type VoteCountAggregateInputType = {
@@ -92,6 +106,8 @@ export type VoteCountAggregateInputType = {
   pollId?: true
   optionId?: true
   voterHash?: true
+  isAnonymous?: true
+  userId?: true
   _all?: true
 }
 
@@ -186,6 +202,8 @@ export type VoteGroupByOutputType = {
   pollId: number
   optionId: number
   voterHash: string
+  isAnonymous: boolean
+  userId: number | null
   _count: VoteCountAggregateOutputType | null
   _avg: VoteAvgAggregateOutputType | null
   _sum: VoteSumAggregateOutputType | null
@@ -216,8 +234,11 @@ export type VoteWhereInput = {
   pollId?: Prisma.IntFilter<"Vote"> | number
   optionId?: Prisma.IntFilter<"Vote"> | number
   voterHash?: Prisma.StringFilter<"Vote"> | string
+  isAnonymous?: Prisma.BoolFilter<"Vote"> | boolean
+  userId?: Prisma.IntNullableFilter<"Vote"> | number | null
   poll?: Prisma.XOR<Prisma.PollScalarRelationFilter, Prisma.PollWhereInput>
   option?: Prisma.XOR<Prisma.OptionScalarRelationFilter, Prisma.OptionWhereInput>
+  user?: Prisma.XOR<Prisma.UserNullableScalarRelationFilter, Prisma.UserWhereInput> | null
 }
 
 export type VoteOrderByWithRelationInput = {
@@ -225,8 +246,11 @@ export type VoteOrderByWithRelationInput = {
   pollId?: Prisma.SortOrder
   optionId?: Prisma.SortOrder
   voterHash?: Prisma.SortOrder
+  isAnonymous?: Prisma.SortOrder
+  userId?: Prisma.SortOrderInput | Prisma.SortOrder
   poll?: Prisma.PollOrderByWithRelationInput
   option?: Prisma.OptionOrderByWithRelationInput
+  user?: Prisma.UserOrderByWithRelationInput
 }
 
 export type VoteWhereUniqueInput = Prisma.AtLeast<{
@@ -238,8 +262,11 @@ export type VoteWhereUniqueInput = Prisma.AtLeast<{
   pollId?: Prisma.IntFilter<"Vote"> | number
   optionId?: Prisma.IntFilter<"Vote"> | number
   voterHash?: Prisma.StringFilter<"Vote"> | string
+  isAnonymous?: Prisma.BoolFilter<"Vote"> | boolean
+  userId?: Prisma.IntNullableFilter<"Vote"> | number | null
   poll?: Prisma.XOR<Prisma.PollScalarRelationFilter, Prisma.PollWhereInput>
   option?: Prisma.XOR<Prisma.OptionScalarRelationFilter, Prisma.OptionWhereInput>
+  user?: Prisma.XOR<Prisma.UserNullableScalarRelationFilter, Prisma.UserWhereInput> | null
 }, "id" | "pollId_voterHash">
 
 export type VoteOrderByWithAggregationInput = {
@@ -247,6 +274,8 @@ export type VoteOrderByWithAggregationInput = {
   pollId?: Prisma.SortOrder
   optionId?: Prisma.SortOrder
   voterHash?: Prisma.SortOrder
+  isAnonymous?: Prisma.SortOrder
+  userId?: Prisma.SortOrderInput | Prisma.SortOrder
   _count?: Prisma.VoteCountOrderByAggregateInput
   _avg?: Prisma.VoteAvgOrderByAggregateInput
   _max?: Prisma.VoteMaxOrderByAggregateInput
@@ -262,12 +291,16 @@ export type VoteScalarWhereWithAggregatesInput = {
   pollId?: Prisma.IntWithAggregatesFilter<"Vote"> | number
   optionId?: Prisma.IntWithAggregatesFilter<"Vote"> | number
   voterHash?: Prisma.StringWithAggregatesFilter<"Vote"> | string
+  isAnonymous?: Prisma.BoolWithAggregatesFilter<"Vote"> | boolean
+  userId?: Prisma.IntNullableWithAggregatesFilter<"Vote"> | number | null
 }
 
 export type VoteCreateInput = {
   voterHash: string
+  isAnonymous?: boolean
   poll: Prisma.PollCreateNestedOneWithoutVotesInput
   option: Prisma.OptionCreateNestedOneWithoutVotesInput
+  user?: Prisma.UserCreateNestedOneWithoutVotesInput
 }
 
 export type VoteUncheckedCreateInput = {
@@ -275,12 +308,16 @@ export type VoteUncheckedCreateInput = {
   pollId: number
   optionId: number
   voterHash: string
+  isAnonymous?: boolean
+  userId?: number | null
 }
 
 export type VoteUpdateInput = {
   voterHash?: Prisma.StringFieldUpdateOperationsInput | string
+  isAnonymous?: Prisma.BoolFieldUpdateOperationsInput | boolean
   poll?: Prisma.PollUpdateOneRequiredWithoutVotesNestedInput
   option?: Prisma.OptionUpdateOneRequiredWithoutVotesNestedInput
+  user?: Prisma.UserUpdateOneWithoutVotesNestedInput
 }
 
 export type VoteUncheckedUpdateInput = {
@@ -288,6 +325,8 @@ export type VoteUncheckedUpdateInput = {
   pollId?: Prisma.IntFieldUpdateOperationsInput | number
   optionId?: Prisma.IntFieldUpdateOperationsInput | number
   voterHash?: Prisma.StringFieldUpdateOperationsInput | string
+  isAnonymous?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  userId?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
 }
 
 export type VoteCreateManyInput = {
@@ -295,10 +334,13 @@ export type VoteCreateManyInput = {
   pollId: number
   optionId: number
   voterHash: string
+  isAnonymous?: boolean
+  userId?: number | null
 }
 
 export type VoteUpdateManyMutationInput = {
   voterHash?: Prisma.StringFieldUpdateOperationsInput | string
+  isAnonymous?: Prisma.BoolFieldUpdateOperationsInput | boolean
 }
 
 export type VoteUncheckedUpdateManyInput = {
@@ -306,6 +348,8 @@ export type VoteUncheckedUpdateManyInput = {
   pollId?: Prisma.IntFieldUpdateOperationsInput | number
   optionId?: Prisma.IntFieldUpdateOperationsInput | number
   voterHash?: Prisma.StringFieldUpdateOperationsInput | string
+  isAnonymous?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  userId?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
 }
 
 export type VoteListRelationFilter = {
@@ -328,12 +372,15 @@ export type VoteCountOrderByAggregateInput = {
   pollId?: Prisma.SortOrder
   optionId?: Prisma.SortOrder
   voterHash?: Prisma.SortOrder
+  isAnonymous?: Prisma.SortOrder
+  userId?: Prisma.SortOrder
 }
 
 export type VoteAvgOrderByAggregateInput = {
   id?: Prisma.SortOrder
   pollId?: Prisma.SortOrder
   optionId?: Prisma.SortOrder
+  userId?: Prisma.SortOrder
 }
 
 export type VoteMaxOrderByAggregateInput = {
@@ -341,6 +388,8 @@ export type VoteMaxOrderByAggregateInput = {
   pollId?: Prisma.SortOrder
   optionId?: Prisma.SortOrder
   voterHash?: Prisma.SortOrder
+  isAnonymous?: Prisma.SortOrder
+  userId?: Prisma.SortOrder
 }
 
 export type VoteMinOrderByAggregateInput = {
@@ -348,12 +397,57 @@ export type VoteMinOrderByAggregateInput = {
   pollId?: Prisma.SortOrder
   optionId?: Prisma.SortOrder
   voterHash?: Prisma.SortOrder
+  isAnonymous?: Prisma.SortOrder
+  userId?: Prisma.SortOrder
 }
 
 export type VoteSumOrderByAggregateInput = {
   id?: Prisma.SortOrder
   pollId?: Prisma.SortOrder
   optionId?: Prisma.SortOrder
+  userId?: Prisma.SortOrder
+}
+
+export type VoteCreateNestedManyWithoutUserInput = {
+  create?: Prisma.XOR<Prisma.VoteCreateWithoutUserInput, Prisma.VoteUncheckedCreateWithoutUserInput> | Prisma.VoteCreateWithoutUserInput[] | Prisma.VoteUncheckedCreateWithoutUserInput[]
+  connectOrCreate?: Prisma.VoteCreateOrConnectWithoutUserInput | Prisma.VoteCreateOrConnectWithoutUserInput[]
+  createMany?: Prisma.VoteCreateManyUserInputEnvelope
+  connect?: Prisma.VoteWhereUniqueInput | Prisma.VoteWhereUniqueInput[]
+}
+
+export type VoteUncheckedCreateNestedManyWithoutUserInput = {
+  create?: Prisma.XOR<Prisma.VoteCreateWithoutUserInput, Prisma.VoteUncheckedCreateWithoutUserInput> | Prisma.VoteCreateWithoutUserInput[] | Prisma.VoteUncheckedCreateWithoutUserInput[]
+  connectOrCreate?: Prisma.VoteCreateOrConnectWithoutUserInput | Prisma.VoteCreateOrConnectWithoutUserInput[]
+  createMany?: Prisma.VoteCreateManyUserInputEnvelope
+  connect?: Prisma.VoteWhereUniqueInput | Prisma.VoteWhereUniqueInput[]
+}
+
+export type VoteUpdateManyWithoutUserNestedInput = {
+  create?: Prisma.XOR<Prisma.VoteCreateWithoutUserInput, Prisma.VoteUncheckedCreateWithoutUserInput> | Prisma.VoteCreateWithoutUserInput[] | Prisma.VoteUncheckedCreateWithoutUserInput[]
+  connectOrCreate?: Prisma.VoteCreateOrConnectWithoutUserInput | Prisma.VoteCreateOrConnectWithoutUserInput[]
+  upsert?: Prisma.VoteUpsertWithWhereUniqueWithoutUserInput | Prisma.VoteUpsertWithWhereUniqueWithoutUserInput[]
+  createMany?: Prisma.VoteCreateManyUserInputEnvelope
+  set?: Prisma.VoteWhereUniqueInput | Prisma.VoteWhereUniqueInput[]
+  disconnect?: Prisma.VoteWhereUniqueInput | Prisma.VoteWhereUniqueInput[]
+  delete?: Prisma.VoteWhereUniqueInput | Prisma.VoteWhereUniqueInput[]
+  connect?: Prisma.VoteWhereUniqueInput | Prisma.VoteWhereUniqueInput[]
+  update?: Prisma.VoteUpdateWithWhereUniqueWithoutUserInput | Prisma.VoteUpdateWithWhereUniqueWithoutUserInput[]
+  updateMany?: Prisma.VoteUpdateManyWithWhereWithoutUserInput | Prisma.VoteUpdateManyWithWhereWithoutUserInput[]
+  deleteMany?: Prisma.VoteScalarWhereInput | Prisma.VoteScalarWhereInput[]
+}
+
+export type VoteUncheckedUpdateManyWithoutUserNestedInput = {
+  create?: Prisma.XOR<Prisma.VoteCreateWithoutUserInput, Prisma.VoteUncheckedCreateWithoutUserInput> | Prisma.VoteCreateWithoutUserInput[] | Prisma.VoteUncheckedCreateWithoutUserInput[]
+  connectOrCreate?: Prisma.VoteCreateOrConnectWithoutUserInput | Prisma.VoteCreateOrConnectWithoutUserInput[]
+  upsert?: Prisma.VoteUpsertWithWhereUniqueWithoutUserInput | Prisma.VoteUpsertWithWhereUniqueWithoutUserInput[]
+  createMany?: Prisma.VoteCreateManyUserInputEnvelope
+  set?: Prisma.VoteWhereUniqueInput | Prisma.VoteWhereUniqueInput[]
+  disconnect?: Prisma.VoteWhereUniqueInput | Prisma.VoteWhereUniqueInput[]
+  delete?: Prisma.VoteWhereUniqueInput | Prisma.VoteWhereUniqueInput[]
+  connect?: Prisma.VoteWhereUniqueInput | Prisma.VoteWhereUniqueInput[]
+  update?: Prisma.VoteUpdateWithWhereUniqueWithoutUserInput | Prisma.VoteUpdateWithWhereUniqueWithoutUserInput[]
+  updateMany?: Prisma.VoteUpdateManyWithWhereWithoutUserInput | Prisma.VoteUpdateManyWithWhereWithoutUserInput[]
+  deleteMany?: Prisma.VoteScalarWhereInput | Prisma.VoteScalarWhereInput[]
 }
 
 export type VoteCreateNestedManyWithoutPollInput = {
@@ -440,15 +534,72 @@ export type VoteUncheckedUpdateManyWithoutOptionNestedInput = {
   deleteMany?: Prisma.VoteScalarWhereInput | Prisma.VoteScalarWhereInput[]
 }
 
+export type VoteCreateWithoutUserInput = {
+  voterHash: string
+  isAnonymous?: boolean
+  poll: Prisma.PollCreateNestedOneWithoutVotesInput
+  option: Prisma.OptionCreateNestedOneWithoutVotesInput
+}
+
+export type VoteUncheckedCreateWithoutUserInput = {
+  id?: number
+  pollId: number
+  optionId: number
+  voterHash: string
+  isAnonymous?: boolean
+}
+
+export type VoteCreateOrConnectWithoutUserInput = {
+  where: Prisma.VoteWhereUniqueInput
+  create: Prisma.XOR<Prisma.VoteCreateWithoutUserInput, Prisma.VoteUncheckedCreateWithoutUserInput>
+}
+
+export type VoteCreateManyUserInputEnvelope = {
+  data: Prisma.VoteCreateManyUserInput | Prisma.VoteCreateManyUserInput[]
+  skipDuplicates?: boolean
+}
+
+export type VoteUpsertWithWhereUniqueWithoutUserInput = {
+  where: Prisma.VoteWhereUniqueInput
+  update: Prisma.XOR<Prisma.VoteUpdateWithoutUserInput, Prisma.VoteUncheckedUpdateWithoutUserInput>
+  create: Prisma.XOR<Prisma.VoteCreateWithoutUserInput, Prisma.VoteUncheckedCreateWithoutUserInput>
+}
+
+export type VoteUpdateWithWhereUniqueWithoutUserInput = {
+  where: Prisma.VoteWhereUniqueInput
+  data: Prisma.XOR<Prisma.VoteUpdateWithoutUserInput, Prisma.VoteUncheckedUpdateWithoutUserInput>
+}
+
+export type VoteUpdateManyWithWhereWithoutUserInput = {
+  where: Prisma.VoteScalarWhereInput
+  data: Prisma.XOR<Prisma.VoteUpdateManyMutationInput, Prisma.VoteUncheckedUpdateManyWithoutUserInput>
+}
+
+export type VoteScalarWhereInput = {
+  AND?: Prisma.VoteScalarWhereInput | Prisma.VoteScalarWhereInput[]
+  OR?: Prisma.VoteScalarWhereInput[]
+  NOT?: Prisma.VoteScalarWhereInput | Prisma.VoteScalarWhereInput[]
+  id?: Prisma.IntFilter<"Vote"> | number
+  pollId?: Prisma.IntFilter<"Vote"> | number
+  optionId?: Prisma.IntFilter<"Vote"> | number
+  voterHash?: Prisma.StringFilter<"Vote"> | string
+  isAnonymous?: Prisma.BoolFilter<"Vote"> | boolean
+  userId?: Prisma.IntNullableFilter<"Vote"> | number | null
+}
+
 export type VoteCreateWithoutPollInput = {
   voterHash: string
+  isAnonymous?: boolean
   option: Prisma.OptionCreateNestedOneWithoutVotesInput
+  user?: Prisma.UserCreateNestedOneWithoutVotesInput
 }
 
 export type VoteUncheckedCreateWithoutPollInput = {
   id?: number
   optionId: number
   voterHash: string
+  isAnonymous?: boolean
+  userId?: number | null
 }
 
 export type VoteCreateOrConnectWithoutPollInput = {
@@ -477,25 +628,19 @@ export type VoteUpdateManyWithWhereWithoutPollInput = {
   data: Prisma.XOR<Prisma.VoteUpdateManyMutationInput, Prisma.VoteUncheckedUpdateManyWithoutPollInput>
 }
 
-export type VoteScalarWhereInput = {
-  AND?: Prisma.VoteScalarWhereInput | Prisma.VoteScalarWhereInput[]
-  OR?: Prisma.VoteScalarWhereInput[]
-  NOT?: Prisma.VoteScalarWhereInput | Prisma.VoteScalarWhereInput[]
-  id?: Prisma.IntFilter<"Vote"> | number
-  pollId?: Prisma.IntFilter<"Vote"> | number
-  optionId?: Prisma.IntFilter<"Vote"> | number
-  voterHash?: Prisma.StringFilter<"Vote"> | string
-}
-
 export type VoteCreateWithoutOptionInput = {
   voterHash: string
+  isAnonymous?: boolean
   poll: Prisma.PollCreateNestedOneWithoutVotesInput
+  user?: Prisma.UserCreateNestedOneWithoutVotesInput
 }
 
 export type VoteUncheckedCreateWithoutOptionInput = {
   id?: number
   pollId: number
   voterHash: string
+  isAnonymous?: boolean
+  userId?: number | null
 }
 
 export type VoteCreateOrConnectWithoutOptionInput = {
@@ -524,50 +669,97 @@ export type VoteUpdateManyWithWhereWithoutOptionInput = {
   data: Prisma.XOR<Prisma.VoteUpdateManyMutationInput, Prisma.VoteUncheckedUpdateManyWithoutOptionInput>
 }
 
+export type VoteCreateManyUserInput = {
+  id?: number
+  pollId: number
+  optionId: number
+  voterHash: string
+  isAnonymous?: boolean
+}
+
+export type VoteUpdateWithoutUserInput = {
+  voterHash?: Prisma.StringFieldUpdateOperationsInput | string
+  isAnonymous?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  poll?: Prisma.PollUpdateOneRequiredWithoutVotesNestedInput
+  option?: Prisma.OptionUpdateOneRequiredWithoutVotesNestedInput
+}
+
+export type VoteUncheckedUpdateWithoutUserInput = {
+  id?: Prisma.IntFieldUpdateOperationsInput | number
+  pollId?: Prisma.IntFieldUpdateOperationsInput | number
+  optionId?: Prisma.IntFieldUpdateOperationsInput | number
+  voterHash?: Prisma.StringFieldUpdateOperationsInput | string
+  isAnonymous?: Prisma.BoolFieldUpdateOperationsInput | boolean
+}
+
+export type VoteUncheckedUpdateManyWithoutUserInput = {
+  id?: Prisma.IntFieldUpdateOperationsInput | number
+  pollId?: Prisma.IntFieldUpdateOperationsInput | number
+  optionId?: Prisma.IntFieldUpdateOperationsInput | number
+  voterHash?: Prisma.StringFieldUpdateOperationsInput | string
+  isAnonymous?: Prisma.BoolFieldUpdateOperationsInput | boolean
+}
+
 export type VoteCreateManyPollInput = {
   id?: number
   optionId: number
   voterHash: string
+  isAnonymous?: boolean
+  userId?: number | null
 }
 
 export type VoteUpdateWithoutPollInput = {
   voterHash?: Prisma.StringFieldUpdateOperationsInput | string
+  isAnonymous?: Prisma.BoolFieldUpdateOperationsInput | boolean
   option?: Prisma.OptionUpdateOneRequiredWithoutVotesNestedInput
+  user?: Prisma.UserUpdateOneWithoutVotesNestedInput
 }
 
 export type VoteUncheckedUpdateWithoutPollInput = {
   id?: Prisma.IntFieldUpdateOperationsInput | number
   optionId?: Prisma.IntFieldUpdateOperationsInput | number
   voterHash?: Prisma.StringFieldUpdateOperationsInput | string
+  isAnonymous?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  userId?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
 }
 
 export type VoteUncheckedUpdateManyWithoutPollInput = {
   id?: Prisma.IntFieldUpdateOperationsInput | number
   optionId?: Prisma.IntFieldUpdateOperationsInput | number
   voterHash?: Prisma.StringFieldUpdateOperationsInput | string
+  isAnonymous?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  userId?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
 }
 
 export type VoteCreateManyOptionInput = {
   id?: number
   pollId: number
   voterHash: string
+  isAnonymous?: boolean
+  userId?: number | null
 }
 
 export type VoteUpdateWithoutOptionInput = {
   voterHash?: Prisma.StringFieldUpdateOperationsInput | string
+  isAnonymous?: Prisma.BoolFieldUpdateOperationsInput | boolean
   poll?: Prisma.PollUpdateOneRequiredWithoutVotesNestedInput
+  user?: Prisma.UserUpdateOneWithoutVotesNestedInput
 }
 
 export type VoteUncheckedUpdateWithoutOptionInput = {
   id?: Prisma.IntFieldUpdateOperationsInput | number
   pollId?: Prisma.IntFieldUpdateOperationsInput | number
   voterHash?: Prisma.StringFieldUpdateOperationsInput | string
+  isAnonymous?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  userId?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
 }
 
 export type VoteUncheckedUpdateManyWithoutOptionInput = {
   id?: Prisma.IntFieldUpdateOperationsInput | number
   pollId?: Prisma.IntFieldUpdateOperationsInput | number
   voterHash?: Prisma.StringFieldUpdateOperationsInput | string
+  isAnonymous?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  userId?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
 }
 
 
@@ -577,8 +769,11 @@ export type VoteSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = r
   pollId?: boolean
   optionId?: boolean
   voterHash?: boolean
+  isAnonymous?: boolean
+  userId?: boolean
   poll?: boolean | Prisma.PollDefaultArgs<ExtArgs>
   option?: boolean | Prisma.OptionDefaultArgs<ExtArgs>
+  user?: boolean | Prisma.Vote$userArgs<ExtArgs>
 }, ExtArgs["result"]["vote"]>
 
 export type VoteSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
@@ -586,8 +781,11 @@ export type VoteSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensio
   pollId?: boolean
   optionId?: boolean
   voterHash?: boolean
+  isAnonymous?: boolean
+  userId?: boolean
   poll?: boolean | Prisma.PollDefaultArgs<ExtArgs>
   option?: boolean | Prisma.OptionDefaultArgs<ExtArgs>
+  user?: boolean | Prisma.Vote$userArgs<ExtArgs>
 }, ExtArgs["result"]["vote"]>
 
 export type VoteSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
@@ -595,8 +793,11 @@ export type VoteSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensio
   pollId?: boolean
   optionId?: boolean
   voterHash?: boolean
+  isAnonymous?: boolean
+  userId?: boolean
   poll?: boolean | Prisma.PollDefaultArgs<ExtArgs>
   option?: boolean | Prisma.OptionDefaultArgs<ExtArgs>
+  user?: boolean | Prisma.Vote$userArgs<ExtArgs>
 }, ExtArgs["result"]["vote"]>
 
 export type VoteSelectScalar = {
@@ -604,20 +805,25 @@ export type VoteSelectScalar = {
   pollId?: boolean
   optionId?: boolean
   voterHash?: boolean
+  isAnonymous?: boolean
+  userId?: boolean
 }
 
-export type VoteOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "pollId" | "optionId" | "voterHash", ExtArgs["result"]["vote"]>
+export type VoteOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "pollId" | "optionId" | "voterHash" | "isAnonymous" | "userId", ExtArgs["result"]["vote"]>
 export type VoteInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   poll?: boolean | Prisma.PollDefaultArgs<ExtArgs>
   option?: boolean | Prisma.OptionDefaultArgs<ExtArgs>
+  user?: boolean | Prisma.Vote$userArgs<ExtArgs>
 }
 export type VoteIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   poll?: boolean | Prisma.PollDefaultArgs<ExtArgs>
   option?: boolean | Prisma.OptionDefaultArgs<ExtArgs>
+  user?: boolean | Prisma.Vote$userArgs<ExtArgs>
 }
 export type VoteIncludeUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   poll?: boolean | Prisma.PollDefaultArgs<ExtArgs>
   option?: boolean | Prisma.OptionDefaultArgs<ExtArgs>
+  user?: boolean | Prisma.Vote$userArgs<ExtArgs>
 }
 
 export type $VotePayload<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
@@ -625,12 +831,15 @@ export type $VotePayload<ExtArgs extends runtime.Types.Extensions.InternalArgs =
   objects: {
     poll: Prisma.$PollPayload<ExtArgs>
     option: Prisma.$OptionPayload<ExtArgs>
+    user: Prisma.$UserPayload<ExtArgs> | null
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: number
     pollId: number
     optionId: number
     voterHash: string
+    isAnonymous: boolean
+    userId: number | null
   }, ExtArgs["result"]["vote"]>
   composites: {}
 }
@@ -1027,6 +1236,7 @@ export interface Prisma__VoteClient<T, Null = never, ExtArgs extends runtime.Typ
   readonly [Symbol.toStringTag]: "PrismaPromise"
   poll<T extends Prisma.PollDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.PollDefaultArgs<ExtArgs>>): Prisma.Prisma__PollClient<runtime.Types.Result.GetResult<Prisma.$PollPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
   option<T extends Prisma.OptionDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.OptionDefaultArgs<ExtArgs>>): Prisma.Prisma__OptionClient<runtime.Types.Result.GetResult<Prisma.$OptionPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+  user<T extends Prisma.Vote$userArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Vote$userArgs<ExtArgs>>): Prisma.Prisma__UserClient<runtime.Types.Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -1060,6 +1270,8 @@ export interface VoteFieldRefs {
   readonly pollId: Prisma.FieldRef<"Vote", 'Int'>
   readonly optionId: Prisma.FieldRef<"Vote", 'Int'>
   readonly voterHash: Prisma.FieldRef<"Vote", 'String'>
+  readonly isAnonymous: Prisma.FieldRef<"Vote", 'Boolean'>
+  readonly userId: Prisma.FieldRef<"Vote", 'Int'>
 }
     
 
@@ -1453,6 +1665,25 @@ export type VoteDeleteManyArgs<ExtArgs extends runtime.Types.Extensions.Internal
    * Limit how many Votes to delete.
    */
   limit?: number
+}
+
+/**
+ * Vote.user
+ */
+export type Vote$userArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the User
+   */
+  select?: Prisma.UserSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the User
+   */
+  omit?: Prisma.UserOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.UserInclude<ExtArgs> | null
+  where?: Prisma.UserWhereInput
 }
 
 /**
