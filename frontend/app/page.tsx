@@ -1,14 +1,12 @@
 import Image from "next/image";
 import Link from "next/link";
 import { HatGlasses, CircleDot } from "lucide-react";
-import { motion, AnimatePresence } from "motion/react";
 import SocialProof from "./components/SocialProof";
 
 export default function Home() {
   return (
     <>
       <div className="flex flex-col min-h-screen text-text w-full">
-        {/* <header className="py-6"> */}
         <nav className="z-100 p-6 sticky top-0 backdrop-blur-sm flex items-center justify-around border-b border-border/30">
           <Link href={"/"}>
             <div className="flex gap-2 items-center">
@@ -26,7 +24,6 @@ export default function Home() {
             </button>
           </Link>
         </nav>
-        {/* </header> */}
 
         <main className="flex flex-col items-center flex-1 w-full text-text">
           <h1 className="mt-10 mb-4 text-6xl/18  text-center font-semibold max-w-4xl">
@@ -69,10 +66,9 @@ export default function Home() {
               alt="Pollie preview"
             />
           </section>
-          {/* <AnimatePresence></AnimatePresence> */}
           <section className="flex flex-col gap-3 items-center my-5">
             <h2 className="text-primary font-bold text-5xl mb-5">Features:</h2>
-            <div className="flex gap-2">
+            <div className="flex flex-col sm:flex-row gap-3">
               <div className="flex items-center gap-2 border rounded-xl border-border/30 bg-bg-dark p-4 hover:-translate-y-0.5 transition ease-in-out">
                 <HatGlasses size={224} color="#e3fb3e" />
                 <div className="flex flex-col max-w-50">

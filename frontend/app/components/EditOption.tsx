@@ -1,4 +1,4 @@
-import { GripVertical, Check, X } from "lucide-react";
+import { Check, X } from "lucide-react";
 import { Dispatch, SetStateAction } from "react";
 import type { Option } from "../(dashboard)/polls/create/page";
 
@@ -21,13 +21,6 @@ export default function EditOption({
         className="flex items-center justify-between text-text
 									transition-all ease-in-out gap-2"
       >
-        <button
-          className="cursor-pointer hover:bg-bg/70 p-2.5 rounded-lg
-                  transition ease-in-out"
-          type="button"
-        >
-          <GripVertical />
-        </button>
         <input
           value={option.value}
           onChange={(e) =>
