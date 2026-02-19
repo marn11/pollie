@@ -18,8 +18,9 @@ export default function Home() {
           </Link>
           <Link href={"/dashboard"}>
             <button
-              className="bg-primary cursor-pointer text-black font-semibold px-5 py-3 rounded-xl 
-              shadow-sm hover:shadow-md hover:-translate-y-0.5 transition-all"
+              className="bg-primary hover:bg-primary/80 cursor-pointer text-bg-dark font-semibold px-5 py-3 rounded-2xl 
+              hover:-translate-y-0.5 transition-all
+              inset-shadow-sm inset-shadow-border"
             >
               Go to dashboard
             </button>
@@ -72,15 +73,27 @@ export default function Home() {
               <div className="flex items-center gap-2 border rounded-xl border-border/30 bg-bg-dark p-4 hover:-translate-y-0.5 transition ease-in-out">
                 <HatGlasses size={224} color="#e3fb3e" />
                 <div className="flex flex-col max-w-50">
-                  <h4 className="text-primary text-xl font-medium h-9">Anonymous Polls:</h4>
-                  <p className="h-50 ">We guarantee you at Pollie that if you create an anonymous poll, no one (not even the admins) will know that that poll was created by you.</p>
+                  <h4 className="text-primary text-xl font-medium h-9">
+                    Anonymous Polls:
+                  </h4>
+                  <p className="h-50 ">
+                    We guarantee you at Pollie that if you create an anonymous
+                    poll, no one (not even the admins) will know that that poll
+                    was created by you.
+                  </p>
                 </div>
               </div>
               <div className="flex items-center gap-2 border rounded-xl border-border/30 bg-bg-dark p-4 hover:-translate-y-0.5 transition ease-in-out">
                 <CircleDot size={224} color="#e3fb3e" />
                 <div className="flex flex-col max-w-50">
-                  <h4 className="text-primary text-xl font-medium h-9">One vote per user:</h4>
-                  <p className="h-50">To ensure a fair voting process, and to ensure that the results are not falsified, we only allow each user one vote per poll.</p>
+                  <h4 className="text-primary text-xl font-medium h-9">
+                    One vote per user:
+                  </h4>
+                  <p className="h-50">
+                    To ensure a fair voting process, and to ensure that the
+                    results are not falsified, we only allow each user one vote
+                    per poll.
+                  </p>
                 </div>
               </div>
               <div className="flex items-center gap-2 border rounded-xl border-border/30 bg-bg-dark p-4 hover:-translate-y-0.5 transition ease-in-out">
@@ -91,23 +104,39 @@ export default function Home() {
                   alt="anonymous voting"
                 />
                 <div className="flex flex-col max-w-50">
-                  <h4 className="text-primary text-xl font-medium h-9">Anonymous votes:</h4>
-                  <p className="h-50">At Pollie we care about privacy, so if you decide to vote anonymously, we can assure you that no one will find out what was your vote.</p>
+                  <h4 className="text-primary text-xl font-medium h-9">
+                    Anonymous votes:
+                  </h4>
+                  <p className="h-50">
+                    At Pollie we care about privacy, so if you decide to vote
+                    anonymously, we can assure you that no one will find out
+                    what was your vote.
+                  </p>
                 </div>
               </div>
             </div>
           </section>
-          <section className="flex flex-col my-5 py-4 px-10 gap-4 border items-center rounded-xl border-border/30 bg-bg-dark">
-          <SocialProof/>
-            <h3 className="text-5xl/15 font-medium text-center">They loved it. <br /> Why not you?</h3>
+          <h2>You can also add up to 8 options</h2>
+          <Image
+            src={"/hero.jpg"}
+            width={760}
+            height={420}
+            className="mt-10 rounded-3xl shadow-2xl border"
+            alt="Pollie preview"
+          />
+          <section className="flex flex-col my-5 py-4 px-10 gap-4 border items-center w-8/12 rounded-xl border-border/30 bg-bg-dark">
+            <SocialProof />
+            <h3 className="text-5xl/15 font-bold text-center">
+              They loved it. <br /> Why not you?
+            </h3>
             <Link href={"/dashboard"}>
-            <button
-              className="hover:bg-primary/80 w-fit bg-primary text-bg-dark cursor-pointer font-semibold p-2 px-4
+              <button
+                className="hover:bg-primary/80 w-fit bg-primary text-bg-dark cursor-pointer font-semibold p-2 px-4
               inset-shadow-sm inset-shadow-border
               rounded-2xl hover:-translate-y-1 transition-all ease-in-out"
-            >
-              Start now!
-            </button>
+              >
+                Start now!
+              </button>
             </Link>
           </section>
         </main>

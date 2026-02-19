@@ -23,9 +23,9 @@ export default function Create() {
   const [confirmedOptions, setConfirmedOptions] = useState<Option[]>([]);
   return (
     <>
-      <div className="flex items-center justify-center my-4 h-full w-full bg-main text-text">
+      <div className="h-full flex justify-center text-text overflow-auto py-10 px-4">
         <form
-          className="flex-col items-center justify-between p-6 h-fit w-md max-w-xl
+          className="p-6 w-md max-w-xl
           rounded-2xl border border-border-muted/30 bg-bg-dark shadow-lg overflow-auto"
           // onSubmit={handleSubmit}
         >
