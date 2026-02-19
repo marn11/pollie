@@ -1,5 +1,6 @@
 # 🗳️ Pollie: Secure & Anonymous Polling System
-Pollie is a full-stack polling application built with NestJS and Next.js. It allows users to create public or anonymous polls and cast votes with a strict "one-vote-per-user" enforcement while also giving voters the ability to keep their vote private.
+Pollie is a full-stack polling application built with NestJS and Next.js. It allows users to create public or anonymous polls and cast votes with a strict "one-vote-per-user" enforcement while also giving voters the ability to keep their vote private. The app is responsive btw!
+
 <img width="1900" height="942" alt="image" src="https://github.com/user-attachments/assets/b701f8b3-bf03-4c6f-bfd7-751444a2fb70" />
 <img width="1917" height="944" alt="image" src="https://github.com/user-attachments/assets/e7fee617-864a-46d2-ac09-9bd3bd0bd0b1" />
 
