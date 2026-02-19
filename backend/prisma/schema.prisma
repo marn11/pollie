@@ -20,6 +20,7 @@ model User {
   email    String  @unique
   name     String?
   googleId String? @unique
+  avatar   String?
   polls    Poll[]
   votes    Vote[]
 }
