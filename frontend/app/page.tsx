@@ -9,10 +9,10 @@ export default function Home() {
     <>
       <div className="flex flex-col min-h-screen text-text w-full">
         {/* <header className="py-6"> */}
-        <nav className="p-6 sticky top-0 backdrop-blur-sm flex items-center justify-around border-b border-border/30">
+        <nav className="z-100 p-6 sticky top-0 backdrop-blur-sm flex items-center justify-around border-b border-border/30">
           <Link href={"/"}>
             <div className="flex gap-2 items-center">
-              <Image src={"/Logo.svg"} width={38} height={38} alt="logo" />
+              <Image src={"/logo.svg"} width={38} height={38} alt="logo" />
               <span className="text-2xl font-semibold text-text">Pollie</span>
             </div>
           </Link>
@@ -59,13 +59,16 @@ export default function Home() {
               </button>
             </Link>
           </div>
-          <Image
-            src={"/hero.jpg"}
-            width={760}
-            height={420}
-            className="mt-10 rounded-3xl shadow-2xl border"
-            alt="Pollie preview"
-          />
+          <section className="m-5 w-[95%] flex justify-center bg-primary/30 rounded-2xl">
+            <Image
+              src={"/dash.png"}
+              width={760}
+              height={420}
+              unoptimized
+              className="m-10 rounded-xl"
+              alt="Pollie preview"
+            />
+          </section>
           {/* <AnimatePresence></AnimatePresence> */}
           <section className="flex flex-col gap-3 items-center my-5">
             <h2 className="text-primary font-bold text-5xl mb-5">Features:</h2>
@@ -116,14 +119,17 @@ export default function Home() {
               </div>
             </div>
           </section>
-          <h2>You can also add up to 8 options</h2>
-          <Image
-            src={"/hero.jpg"}
-            width={760}
-            height={420}
-            className="mt-10 rounded-3xl shadow-2xl border"
-            alt="Pollie preview"
-          />
+            <h2 className="text-primary font-bold text-5xl mt-5">Up to 8 options per poll!</h2>
+          <section className="m-5 w-[95%] flex flex-col items-center justify-center bg-warning/30 rounded-2xl">
+            <Image
+              src={"/createnewpoll.png"}
+              width={760}
+              height={420}
+              unoptimized
+              className="m-10 rounded-xl"
+              alt="create new poll"
+            />
+          </section>
           <section className="flex flex-col my-5 py-4 px-10 gap-4 border items-center w-8/12 rounded-xl border-border/30 bg-bg-dark">
             <SocialProof />
             <h3 className="text-5xl/15 font-bold text-center">

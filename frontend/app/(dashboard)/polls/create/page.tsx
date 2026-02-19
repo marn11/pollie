@@ -12,7 +12,8 @@ export type Option = {
 };
 
 export default function Create() {
-  // const [checked, setChecked] = useState(false);
+  const [title, setTitle] = useState("");
+  const [description, setDescription] = useState("");
   const [isAnon, setIsAnon] = useState(false);
   const [pendingOptions, setPendingOptions] = useState<Option[]>([
     {
@@ -21,13 +22,58 @@ export default function Create() {
     },
   ]);
   const [confirmedOptions, setConfirmedOptions] = useState<Option[]>([]);
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    const options = [...confirmedOptions.map((op) => op.value)].filter(
+      (val) => val.trim() !== "",
+    );
+    if (options.length < 2) {
+      toast.error("You need at least 2 options!");
+      return;
+    }
+    try {
+      const res = await fetch(process.env.NEXT_PUBLIC_API_URL! + "polls", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          title,
+          description,
+          isAnonymous: isAnon,
+          options: options,
+        }),
+        credentials: "include",
+      });
+      if (res.ok) {
+        toast.success("Poll created successfully!");
+        setTitle("");
+        setDescription("");
+        setConfirmedOptions([]);
+        setPendingOptions([
+          {
+            id: crypto.randomUUID(),
+            value: "",
+          },
+        ]);
+        setIsAnon(false);
+      } else {
+        const errorData = await res.json();
+        if (Array.isArray(errorData.message)) {
+          errorData.message.map((msg: string) => toast.error(msg));
+        } else toast.error(errorData.message || "Failed to create poll");
+      }
+    } catch (err) {
+      toast.error("Something went wrong. Is the server running?");
+    }
+  };
   return (
     <>
       <div className="h-full flex justify-center text-text overflow-auto py-10 px-4">
         <form
           className="p-6 w-md max-w-xl
           rounded-2xl border border-border-muted/30 bg-bg-dark shadow-lg overflow-auto"
-          // onSubmit={handleSubmit}
+          onSubmit={handleSubmit}
         >
           <h2 className="text-3xl font-bold my-4">Create a new Poll</h2>
           <div className="flex flex-col gap-5 w-full">
@@ -39,8 +85,8 @@ export default function Create() {
                 type="text"
                 required
                 placeholder="Poll title"
-                // value={name}
-                // onChange={(e) => setName(e.target.value)}
+                value={title}
+                onChange={(e) => setTitle(e.target.value)}
                 className="focus:outline-none p-3 border hover:bg-bg-dark border-border-muted/30 rounded-xl bg-bg text-text focus:ring-2 focus:ring-border/70
                 transition ease-in-out"
               />
@@ -52,8 +98,8 @@ export default function Create() {
               <input
                 type="text"
                 required
-                // value={location}
-                // onChange={(e) => setLocation(e.target.value)}
+                value={description}
+                onChange={(e) => setDescription(e.target.value)}
                 placeholder="Poll description"
                 className="focus:outline-none p-3 border hover:bg-bg-dark border-border-muted/30 rounded-xl bg-bg text-text focus:ring-2 focus:ring-border/70
                 transition ease-in-out"
@@ -136,7 +182,6 @@ export default function Create() {
               Submit
             </button>
           </div>
-          {/* onclick submit the post request */}
         </form>
       </div>
     </>

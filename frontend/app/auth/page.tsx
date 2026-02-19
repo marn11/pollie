@@ -5,7 +5,7 @@ export default function Auth() {
   return (
     <div className="flex min-h-screen items-center justify-center">
       <main className="flex min-h-screen w-full max-w-3xl flex-col items-center py-32 px-16">
-        <Image src={"/logo.png"} width={64} height={64} alt="logo"></Image>
+        <Image src={"/Logo.png"} width={64} height={64} alt="logo"></Image>
         <h1 className="font-bold text-3xl text-white m-2">Welcome Back!</h1>
         <h2 className="mb-6 text-white/60">
           click on "continue with google" to login to your account.
