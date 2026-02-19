@@ -9,6 +9,7 @@
     "lint": "eslint"
   },
   "dependencies": {
+    "facehash": "^0.1.0",
     "jose": "^6.1.3",
     "lucide-react": "^0.564.0",
     "motion": "^12.34.0",
