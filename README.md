@@ -1,5 +1,7 @@
 # 🗳️ Pollie: Secure & Anonymous Polling System
 Pollie is a full-stack polling application built with NestJS and Next.js. It allows users to create public or anonymous polls and cast votes with a strict "one-vote-per-user" enforcement while also giving voters the ability to keep their vote private.
+<img width="1900" height="942" alt="image" src="https://github.com/user-attachments/assets/b701f8b3-bf03-4c6f-bfd7-751444a2fb70" />
+<img width="1917" height="944" alt="image" src="https://github.com/user-attachments/assets/e7fee617-864a-46d2-ac09-9bd3bd0bd0b1" />
 
 ## 📖 Overview
 - Creation is Flexible: Polls can be public (showing the creator) or anonymous (hiding the creator even from database admins).
@@ -7,9 +9,9 @@ Pollie is a full-stack polling application built with NestJS and Next.js. It all
 - Integrity is Guaranteed: The system prevents double-voting using cryptographic hashing, ensuring results are always accurate.
 
 ## 🛠️ Key Technical Choices
-1) Prisma 7 & Driver Adapters — Uses the TypeScript-native Driver Adapter (@prisma/adapter-pg) for a smaller bundle.
-2) Salted Deterministic Hashing — Voter hash is `SHA256(UserId + PollId + SECRET_SALT)` to enforce one-vote-per-user without linking identities.
-3) Deterministic Avatars — Facehash seeds avatars with the voter hash or poll id for consistent visuals without storing identities.
+1) I opted for the latest Prisma 7 architecture. Unlike previous versions that relied on a heavy Rust-based engine, Prisma 7 uses a TypeScript-native Driver Adapter (@prisma/adapter-pg). They announced that the bundle output is now 90% smaller!
+2) To satisfy the "Absolute Anonymity" requirement, I implemented a Salted SHA-256 Hashing strategy. When a user votes, I generate a voterHash using `SHA256(UserId + PollId + SECRET_SALT)`.
+3) For users without profile pictures or for anonymous participants, I integrated Facehash which is a cool package I found while scrolling on X.
 4) HttpOnly Cookie Auth — JWTs live in HttpOnly cookies to mitigate XSS token theft.
 
 ## 🚀 Local Setup Instructions
