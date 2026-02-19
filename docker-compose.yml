@@ -11,12 +11,24 @@ services:
       - postgres_data:/var/lib/postgresql/data
   backend:
     container_name: backend
+    restart: on-failure
     build: ./backend
     ports:
       - "3001:3001"
     depends_on:
       - postgres
     env_file:
-      - .env
+      - ./backend/.env
+  frontend:
+    container_name: frontend
+    restart: on-failure
+    build: ./frontend
+    ports:
+      - "3000:3000"
+    depends_on:
+      - backend
+    env_file:
+      - ./frontend/.env
+
 volumes:
   postgres_data:

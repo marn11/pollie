@@ -22,6 +22,5 @@ export class AuthController {
       path: '/',
     });
     res.redirect(`http://localhost:3000/dashboard`);
-    // change to httponly cookie and redirect to dashboard
   }
 }

@@ -139,10 +139,11 @@ export class PollsService {
       description: poll.description,
       isAnonymous: poll.isAnonymous,
       creator: poll.isAnonymous
-        ? { name: 'Anonymous', avatar: null }
+        ? { name: 'Anonymous', avatar: null, seed: `anon-poll-${poll.id}` }
         : {
             name: poll.creator?.name || 'Guest',
             avatar: poll.creator?.avatar || null,
+            seed: `user-${poll.creator?.name}`,
           },
       hasVoted: !!userVote,
       selectedOptionId: userVote?.optionId || null,

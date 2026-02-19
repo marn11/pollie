@@ -8,8 +8,8 @@ RUN npm install
 
 COPY . .
 
-RUN npm run build
+RUN npx prisma generate
 
 EXPOSE 3001
 
-CMD [ "npm", "run", "start:dev" ]
+CMD npx prisma migrate deploy && npm run start:dev
