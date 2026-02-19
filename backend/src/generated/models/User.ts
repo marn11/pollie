@@ -39,6 +39,7 @@ export type UserMinAggregateOutputType = {
   email: string | null
   name: string | null
   googleId: string | null
+  avatar: string | null
 }
 
 export type UserMaxAggregateOutputType = {
@@ -46,6 +47,7 @@ export type UserMaxAggregateOutputType = {
   email: string | null
   name: string | null
   googleId: string | null
+  avatar: string | null
 }
 
 export type UserCountAggregateOutputType = {
@@ -53,6 +55,7 @@ export type UserCountAggregateOutputType = {
   email: number
   name: number
   googleId: number
+  avatar: number
   _all: number
 }
 
@@ -70,6 +73,7 @@ export type UserMinAggregateInputType = {
   email?: true
   name?: true
   googleId?: true
+  avatar?: true
 }
 
 export type UserMaxAggregateInputType = {
@@ -77,6 +81,7 @@ export type UserMaxAggregateInputType = {
   email?: true
   name?: true
   googleId?: true
+  avatar?: true
 }
 
 export type UserCountAggregateInputType = {
@@ -84,6 +89,7 @@ export type UserCountAggregateInputType = {
   email?: true
   name?: true
   googleId?: true
+  avatar?: true
   _all?: true
 }
 
@@ -178,6 +184,7 @@ export type UserGroupByOutputType = {
   email: string
   name: string | null
   googleId: string | null
+  avatar: string | null
   _count: UserCountAggregateOutputType | null
   _avg: UserAvgAggregateOutputType | null
   _sum: UserSumAggregateOutputType | null
@@ -208,6 +215,7 @@ export type UserWhereInput = {
   email?: Prisma.StringFilter<"User"> | string
   name?: Prisma.StringNullableFilter<"User"> | string | null
   googleId?: Prisma.StringNullableFilter<"User"> | string | null
+  avatar?: Prisma.StringNullableFilter<"User"> | string | null
   polls?: Prisma.PollListRelationFilter
   votes?: Prisma.VoteListRelationFilter
 }
@@ -217,6 +225,7 @@ export type UserOrderByWithRelationInput = {
   email?: Prisma.SortOrder
   name?: Prisma.SortOrderInput | Prisma.SortOrder
   googleId?: Prisma.SortOrderInput | Prisma.SortOrder
+  avatar?: Prisma.SortOrderInput | Prisma.SortOrder
   polls?: Prisma.PollOrderByRelationAggregateInput
   votes?: Prisma.VoteOrderByRelationAggregateInput
 }
@@ -229,6 +238,7 @@ export type UserWhereUniqueInput = Prisma.AtLeast<{
   OR?: Prisma.UserWhereInput[]
   NOT?: Prisma.UserWhereInput | Prisma.UserWhereInput[]
   name?: Prisma.StringNullableFilter<"User"> | string | null
+  avatar?: Prisma.StringNullableFilter<"User"> | string | null
   polls?: Prisma.PollListRelationFilter
   votes?: Prisma.VoteListRelationFilter
 }, "id" | "email" | "googleId">
@@ -238,6 +248,7 @@ export type UserOrderByWithAggregationInput = {
   email?: Prisma.SortOrder
   name?: Prisma.SortOrderInput | Prisma.SortOrder
   googleId?: Prisma.SortOrderInput | Prisma.SortOrder
+  avatar?: Prisma.SortOrderInput | Prisma.SortOrder
   _count?: Prisma.UserCountOrderByAggregateInput
   _avg?: Prisma.UserAvgOrderByAggregateInput
   _max?: Prisma.UserMaxOrderByAggregateInput
@@ -253,12 +264,14 @@ export type UserScalarWhereWithAggregatesInput = {
   email?: Prisma.StringWithAggregatesFilter<"User"> | string
   name?: Prisma.StringNullableWithAggregatesFilter<"User"> | string | null
   googleId?: Prisma.StringNullableWithAggregatesFilter<"User"> | string | null
+  avatar?: Prisma.StringNullableWithAggregatesFilter<"User"> | string | null
 }
 
 export type UserCreateInput = {
   email: string
   name?: string | null
   googleId?: string | null
+  avatar?: string | null
   polls?: Prisma.PollCreateNestedManyWithoutCreatorInput
   votes?: Prisma.VoteCreateNestedManyWithoutUserInput
 }
@@ -268,6 +281,7 @@ export type UserUncheckedCreateInput = {
   email: string
   name?: string | null
   googleId?: string | null
+  avatar?: string | null
   polls?: Prisma.PollUncheckedCreateNestedManyWithoutCreatorInput
   votes?: Prisma.VoteUncheckedCreateNestedManyWithoutUserInput
 }
@@ -276,6 +290,7 @@ export type UserUpdateInput = {
   email?: Prisma.StringFieldUpdateOperationsInput | string
   name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   googleId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  avatar?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   polls?: Prisma.PollUpdateManyWithoutCreatorNestedInput
   votes?: Prisma.VoteUpdateManyWithoutUserNestedInput
 }
@@ -285,6 +300,7 @@ export type UserUncheckedUpdateInput = {
   email?: Prisma.StringFieldUpdateOperationsInput | string
   name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   googleId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  avatar?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   polls?: Prisma.PollUncheckedUpdateManyWithoutCreatorNestedInput
   votes?: Prisma.VoteUncheckedUpdateManyWithoutUserNestedInput
 }
@@ -294,12 +310,14 @@ export type UserCreateManyInput = {
   email: string
   name?: string | null
   googleId?: string | null
+  avatar?: string | null
 }
 
 export type UserUpdateManyMutationInput = {
   email?: Prisma.StringFieldUpdateOperationsInput | string
   name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   googleId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  avatar?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
 }
 
 export type UserUncheckedUpdateManyInput = {
@@ -307,6 +325,7 @@ export type UserUncheckedUpdateManyInput = {
   email?: Prisma.StringFieldUpdateOperationsInput | string
   name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   googleId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  avatar?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
 }
 
 export type UserCountOrderByAggregateInput = {
@@ -314,6 +333,7 @@ export type UserCountOrderByAggregateInput = {
   email?: Prisma.SortOrder
   name?: Prisma.SortOrder
   googleId?: Prisma.SortOrder
+  avatar?: Prisma.SortOrder
 }
 
 export type UserAvgOrderByAggregateInput = {
@@ -325,6 +345,7 @@ export type UserMaxOrderByAggregateInput = {
   email?: Prisma.SortOrder
   name?: Prisma.SortOrder
   googleId?: Prisma.SortOrder
+  avatar?: Prisma.SortOrder
 }
 
 export type UserMinOrderByAggregateInput = {
@@ -332,6 +353,7 @@ export type UserMinOrderByAggregateInput = {
   email?: Prisma.SortOrder
   name?: Prisma.SortOrder
   googleId?: Prisma.SortOrder
+  avatar?: Prisma.SortOrder
 }
 
 export type UserSumOrderByAggregateInput = {
@@ -395,6 +417,7 @@ export type UserCreateWithoutPollsInput = {
   email: string
   name?: string | null
   googleId?: string | null
+  avatar?: string | null
   votes?: Prisma.VoteCreateNestedManyWithoutUserInput
 }
 
@@ -403,6 +426,7 @@ export type UserUncheckedCreateWithoutPollsInput = {
   email: string
   name?: string | null
   googleId?: string | null
+  avatar?: string | null
   votes?: Prisma.VoteUncheckedCreateNestedManyWithoutUserInput
 }
 
@@ -426,6 +450,7 @@ export type UserUpdateWithoutPollsInput = {
   email?: Prisma.StringFieldUpdateOperationsInput | string
   name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   googleId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  avatar?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   votes?: Prisma.VoteUpdateManyWithoutUserNestedInput
 }
 
@@ -434,6 +459,7 @@ export type UserUncheckedUpdateWithoutPollsInput = {
   email?: Prisma.StringFieldUpdateOperationsInput | string
   name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   googleId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  avatar?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   votes?: Prisma.VoteUncheckedUpdateManyWithoutUserNestedInput
 }
 
@@ -441,6 +467,7 @@ export type UserCreateWithoutVotesInput = {
   email: string
   name?: string | null
   googleId?: string | null
+  avatar?: string | null
   polls?: Prisma.PollCreateNestedManyWithoutCreatorInput
 }
 
@@ -449,6 +476,7 @@ export type UserUncheckedCreateWithoutVotesInput = {
   email: string
   name?: string | null
   googleId?: string | null
+  avatar?: string | null
   polls?: Prisma.PollUncheckedCreateNestedManyWithoutCreatorInput
 }
 
@@ -472,6 +500,7 @@ export type UserUpdateWithoutVotesInput = {
   email?: Prisma.StringFieldUpdateOperationsInput | string
   name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   googleId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  avatar?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   polls?: Prisma.PollUpdateManyWithoutCreatorNestedInput
 }
 
@@ -480,6 +509,7 @@ export type UserUncheckedUpdateWithoutVotesInput = {
   email?: Prisma.StringFieldUpdateOperationsInput | string
   name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   googleId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  avatar?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   polls?: Prisma.PollUncheckedUpdateManyWithoutCreatorNestedInput
 }
 
@@ -528,6 +558,7 @@ export type UserSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = r
   email?: boolean
   name?: boolean
   googleId?: boolean
+  avatar?: boolean
   polls?: boolean | Prisma.User$pollsArgs<ExtArgs>
   votes?: boolean | Prisma.User$votesArgs<ExtArgs>
   _count?: boolean | Prisma.UserCountOutputTypeDefaultArgs<ExtArgs>
@@ -538,6 +569,7 @@ export type UserSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensio
   email?: boolean
   name?: boolean
   googleId?: boolean
+  avatar?: boolean
 }, ExtArgs["result"]["user"]>
 
 export type UserSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
@@ -545,6 +577,7 @@ export type UserSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensio
   email?: boolean
   name?: boolean
   googleId?: boolean
+  avatar?: boolean
 }, ExtArgs["result"]["user"]>
 
 export type UserSelectScalar = {
@@ -552,9 +585,10 @@ export type UserSelectScalar = {
   email?: boolean
   name?: boolean
   googleId?: boolean
+  avatar?: boolean
 }
 
-export type UserOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "email" | "name" | "googleId", ExtArgs["result"]["user"]>
+export type UserOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "email" | "name" | "googleId" | "avatar", ExtArgs["result"]["user"]>
 export type UserInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   polls?: boolean | Prisma.User$pollsArgs<ExtArgs>
   votes?: boolean | Prisma.User$votesArgs<ExtArgs>
@@ -574,6 +608,7 @@ export type $UserPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs =
     email: string
     name: string | null
     googleId: string | null
+    avatar: string | null
   }, ExtArgs["result"]["user"]>
   composites: {}
 }
@@ -1003,6 +1038,7 @@ export interface UserFieldRefs {
   readonly email: Prisma.FieldRef<"User", 'String'>
   readonly name: Prisma.FieldRef<"User", 'String'>
   readonly googleId: Prisma.FieldRef<"User", 'String'>
+  readonly avatar: Prisma.FieldRef<"User", 'String'>
 }
     
 
