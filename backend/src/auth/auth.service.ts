@@ -15,6 +15,7 @@ export class AuthService {
 					data: {
 						email: details.email,
 						name: details.firstName,
+						avatar: details.picture,
 						googleId: details.googleId,
 					}
 				});
